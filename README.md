@@ -27,7 +27,6 @@ cfg = DebiasConfig()
 trainer = DebiasTrainer(cfg)
 trainer.train_Debias(cfg)
 ```
-
 Once you have trained your model, you can test it by:
 ```python
 trainer.test_CD_debias(cfg)
