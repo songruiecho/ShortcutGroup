@@ -7,4 +7,7 @@ Once you've cloned the code into your own environment, you'll need to modify con
 
 After that, you can follow the steps below to train your model.
 
-1. 
+1. Leave the following code in train.py to train a weak classifier based on the basic language model for keyword search.
+```python
+trainer = WeakTrainer(weak_cfg)
+trainer.train_weak(weak_cfg)
