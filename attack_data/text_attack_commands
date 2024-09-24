@@ -1,0 +1,179 @@
+
+  -h, --help            show this help message and exit
+  --model MODEL         Name of or path to a pre-trained TextAttack model to
+                        load. Choices: ['bert-base-uncased', 'bert-base-
+                        uncased-ag-news', 'bert-base-uncased-cola', 'bert-
+                        base-uncased-imdb', 'bert-base-uncased-mnli', 'bert-
+                        base-uncased-mrpc', 'bert-base-uncased-qnli', 'bert-
+                        base-uncased-qqp', 'bert-base-uncased-rte', 'bert-
+                        base-uncased-sst2', 'bert-base-uncased-stsb', 'bert-
+                        base-uncased-wnli', 'bert-base-uncased-mr', 'bert-
+                        base-uncased-snli', 'bert-base-uncased-yelp',
+                        'distilbert-base-uncased', 'distilbert-base-cased-
+                        cola', 'distilbert-base-cased-mrpc', 'distilbert-base-
+                        cased-qqp', 'distilbert-base-cased-snli', 'distilbert-
+                        base-cased-sst2', 'distilbert-base-cased-stsb',
+                        'distilbert-base-uncased-ag-news', 'distilbert-base-
+                        uncased-cola', 'distilbert-base-uncased-imdb',
+                        'distilbert-base-uncased-mnli', 'distilbert-base-
+                        uncased-mr', 'distilbert-base-uncased-mrpc',
+                        'distilbert-base-uncased-qnli', 'distilbert-base-
+                        uncased-rte', 'distilbert-base-uncased-wnli',
+                        'roberta-base', 'roberta-base-ag-news', 'roberta-base-
+                        cola', 'roberta-base-imdb', 'roberta-base-mr',
+                        'roberta-base-mrpc', 'roberta-base-qnli', 'roberta-
+                        base-rte', 'roberta-base-sst2', 'roberta-base-stsb',
+                        'roberta-base-wnli', 'albert-base-v2', 'albert-
+                        base-v2-ag-news', 'albert-base-v2-cola', 'albert-
+                        base-v2-imdb', 'albert-base-v2-mr', 'albert-
+                        base-v2-rte', 'albert-base-v2-qqp', 'albert-
+                        base-v2-snli', 'albert-base-v2-sst2', 'albert-
+                        base-v2-stsb', 'albert-base-v2-wnli', 'albert-
+                        base-v2-yelp', 'xlnet-base-cased', 'xlnet-base-cased-
+                        cola', 'xlnet-base-cased-imdb', 'xlnet-base-cased-mr',
+                        'xlnet-base-cased-mrpc', 'xlnet-base-cased-rte',
+                        'xlnet-base-cased-stsb', 'xlnet-base-cased-wnli',
+                        'lstm-ag-news', 'lstm-imdb', 'lstm-mr', 'lstm-sst2',
+                        'lstm-yelp', 'cnn-ag-news', 'cnn-imdb', 'cnn-mr',
+                        'cnn-sst2', 'cnn-yelp', 't5-en-de', 't5-en-fr',
+                        't5-en-ro', 't5-summarization'] (default: None)
+  --model-from-file MODEL_FROM_FILE
+                        File of model and tokenizer to import. (default: None)
+  --model-from-huggingface MODEL_FROM_HUGGINGFACE
+                        Name of or path of pre-trained HuggingFace model to
+                        load. (default: None)
+  --dataset-by-model DATASET_BY_MODEL
+                        Dataset to load depending on the name of the model
+                        (default: None)
+  --dataset-from-huggingface DATASET_FROM_HUGGINGFACE
+                        Dataset to load from `datasets` repository. (default:
+                        None)
+  --dataset-from-file DATASET_FROM_FILE
+                        Dataset to load from a file. (default: None)
+  --dataset-split DATASET_SPLIT
+                        Split of dataset to use when specifying --dataset-by-
+                        model or --dataset-from-huggingface. (default: None)
+  --filter-by-labels FILTER_BY_LABELS [FILTER_BY_LABELS ...]
+                        List of labels to keep in the dataset and discard all
+                        others. (default: None)
+  --transformation TRANSFORMATION
+                        The transformation to apply. Usage: "--transformation
+                        {transformation}:{arg_1}={value_1},{arg_3}={value_3}".
+                        Choices: {'word-swap-homoglyph', 'word-swap-
+                        inflections', 'word-swap-hownet', 'random-synonym-
+                        insertion', 'word-swap-random-char-deletion', 'word-
+                        swap-neighboring-char-swap', 'word-swap-embedding',
+                        'word-deletion', 'word-swap-masked-lm', 'word-swap-
+                        random-char-insertion', 'word-swap-random-char-
+                        substitution', 'word-swap-qwerty', 'word-swap-
+                        wordnet', 'word-swap-gradient'} (default: word-swap-
+                        embedding)
+  --constraints [CONSTRAINTS [CONSTRAINTS ...]]
+                        Constraints to add to the attack. Usage: "--
+                        constraints
+                        {constraint}:{arg_1}={value_1},{arg_3}={value_3}".
+                        Choices: dict_keys(['embedding', 'bert', 'infer-sent',
+                        'thought-vector', 'use', 'muse', 'bert-score', 'lang-
+                        tool', 'part-of-speech', 'goog-lm', 'gpt2', 'learning-
+                        to-write', 'cola', 'bleu', 'chrf', 'edit-distance',
+                        'meteor', 'max-words-perturbed', 'repeat', 'stopword',
+                        'max-word-index']) (default: ['repeat', 'stopword'])
+  --goal-function GOAL_FUNCTION, -g GOAL_FUNCTION
+                        The goal function to use. choices: targeted-
+                        classification, untargeted-classification, input-
+                        reduction, minimize-bleu, non-overlapping-output,
+                        text-to-text (default: untargeted-classification)
+  --search-method SEARCH_METHOD, --search SEARCH_METHOD, -s SEARCH_METHOD
+                        The search method to use. choices: beam-search,
+                        greedy, ga-word, greedy-word-wir, pso (default:
+                        greedy-word-wir)
+  --attack-recipe {alzantot,bae,bert-attack,faster-alzantot,deepwordbug,hotflip,input-reduction,kuleshov,morpheus,seq2sick,textbugger,textfooler,pwws,iga,pruthi,pso,checklist,clare,a2t}, --recipe {alzantot,bae,bert-attack,faster-alzantot,deepwordbug,hotflip,input-reduction,kuleshov,morpheus,seq2sick,textbugger,textfooler,pwws,iga,pruthi,pso,checklist,clare,a2t}, -r {alzantot,bae,bert-attack,faster-alzantot,deepwordbug,hotflip,input-reduction,kuleshov,morpheus,seq2sick,textbugger,textfooler,pwws,iga,pruthi,pso,checklist,clare,a2t}
+                        full attack recipe (overrides provided goal function,
+                        max_att_tokenstransformation & constraints) (default: None)
+  --attack-from-file ATTACK_FROM_FILE
+                        Path of `.py` file from which to load attack from. Use
+                        `<path>^<variable_name>` to specifiy which variable to
+                        import from the file. (default: None)
+  --interactive         Whether to run attacks interactively. (default: False)
+  --model-batch-size MODEL_BATCH_SIZE
+                        The batch size for making calls to the model.
+                        (default: 32)
+  --model-cache-size MODEL_CACHE_SIZE
+                        The maximum number of items to keep in the model
+                        results cache at once. (default: 262144)
+  --constraint-cache-size CONSTRAINT_CACHE_SIZE
+                        The maximum number of items to keep in the constraints
+                        cache at once. (default: 262144)
+  --num-examples NUM_EXAMPLES, -n NUM_EXAMPLES
+                        The number of examples to process, -1 for entire
+                        dataset. (default: 10)
+  --num-successful-examples NUM_SUCCESSFUL_EXAMPLES
+                        The number of successful adversarial examples we want.
+                        (default: None)
+  --num-examples-offset NUM_EXAMPLES_OFFSET, -o NUM_EXAMPLES_OFFSET
+                        The offset to start at in the dataset. (default: 0)
+  --query-budget QUERY_BUDGET, -q QUERY_BUDGET
+                        The maximum number of model queries allowed per
+                        example attacked. Setting this overwrites the query
+                        budget set in `GoalFunction` object. (default: None)
+  --shuffle             If `True`, shuffle the samples before we attack the
+                        dataset. Default is False. (default: False)
+  --attack-n            Whether to run attack until `n` examples have been
+                        attacked (not skipped). (default: False)
+  --checkpoint-dir CHECKPOINT_DIR
+                        The directory to save checkpoint files. (default:
+                        checkpoints)
+  --checkpoint-interval CHECKPOINT_INTERVAL
+                        If set, checkpoint will be saved after attacking every
+                        N examples. If not set, no checkpoints will be saved.
+                        (default: None)
+  --random-seed RANDOM_SEED
+                        Random seed for reproducibility. (default: 765)
+  --parallel            Run attack using multiple GPUs. (default: False)
+  --num-workers-per-device NUM_WORKERS_PER_DEVICE
+                        Number of worker processes to run per device.
+                        (default: 1)
+  --log-to-txt [LOG_TO_TXT]
+                        Path to which to save attack logs as a text file. Set
+                        this argument if you want to save text logs. If the
+                        last part of the path ends with `.txt` extension, the
+                        path is assumed to path for output file. (default:
+                        None)
+  --log-to-csv [LOG_TO_CSV]
+                        Path to which to save attack logs as a CSV file. Set
+                        this argument if you want to save CSV logs. If the
+                        last part of the path ends with `.csv` extension, the
+                        path is assumed to path for output file. (default:
+                        None)
+  --log-summary-to-json [LOG_SUMMARY_TO_JSON]
+                        Path to which to save attack summary as a JSON file.
+                        Set this argument if you want to save attack results
+                        summary in a JSON. If the last part of the path ends
+                        with `.json` extension, the path is assumed to path
+                        for output file. (default: None)
+  --csv-coloring-style CSV_COLORING_STYLE
+                        Method for choosing how to mark perturbed parts of the
+                        text in CSV logs. Options are "file" and "plain".
+                        "file" wraps text with double brackets `[[ <text> ]]`
+                        while "plain" does not mark any text. Default is
+                        "file". (default: file)
+  --log-to-visdom [LOG_TO_VISDOM]
+                        Set this argument if you want to log attacks to
+                        Visdom. The dictionary should have the following three
+                        keys and their corresponding values: `"env", "port",
+                        "hostname"`. Example for command line use: `--log-to-
+                        visdom {"env": "main", "port": 8097, "hostname":
+                        "localhost"}`. (default: None)
+  --log-to-wandb [LOG_TO_WANDB]
+                        Set this argument if you want to log attacks to WandB.
+                        The dictionary should have the following key and its
+                        corresponding value: `"project"`. Example for command
+                        line use: `--log-to-wandb {"project": "textattack"}`.
+                        (default: None)
+  --disable-stdout      Disable logging attack results to stdout (default:
+                        False)
+  --silent              Disable all logging (default: False)
+  --enable-advance-metrics
+                        Enable calculation and display of optional advance
+                        post-hoc metrics like perplexity, USE distance, etc.
+                        (default: False)
