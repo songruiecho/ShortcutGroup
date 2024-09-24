@@ -11,6 +11,7 @@ After that, you can follow the steps below to train your model.
 ```python
 trainer = WeakTrainer(weak_cfg)
 trainer.train_weak(weak_cfg)
+```
 
 2. Subsequently, based on the trained weak classifier, candidate causal words need to be searched.
 ```python
