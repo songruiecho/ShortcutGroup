@@ -27,7 +27,15 @@ cfg = DebiasConfig()
 trainer = DebiasTrainer(cfg)
 trainer.train_Debias(cfg)
 ```
-Once you have trained your model, you can test it by:
+
+5. Once you have trained your model, you can test it by:
 ```python
 trainer.test_CD_debias(cfg)
 ```
+
+6. You can then attack the sample using _attack.py_ and test the results using _attack_test.py_. We used the following three attack methods from the (textattack project)[https://github.com/QData/TextAttack].
+```python
+from textattack.attack_recipes import PWWSRen2019, TextBuggerLi2018, TextFoolerJin2019
+```
+
+7. Gender test can be found in _gender_test.py_.
