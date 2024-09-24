@@ -16,6 +16,7 @@ trainer.train_weak(weak_cfg)
 ```python
 trainer.get_global_ig_sub_keywords()
 trainer.get_global_ig_for_each_sample()
+```
 
 3. Search for the most influential word groups based on the candidate causal words and the weak classifier in SearchWG.py, you can modify **MAX_WG_LENGTH**, **BEEM_WIDTH**, and **antony.json** to define your own search results. Here, **antony.json** It's a predefined antonym table from WordNet for counterfactual flipping your word groups.
 
@@ -24,8 +25,9 @@ trainer.get_global_ig_for_each_sample()
 cfg = DebiasConfig()
 trainer = DebiasTrainer(cfg)
 trainer.train_Debias(cfg)
+```
 
 Once you have trained your model, you can test it by:
 ```python
 trainer.test_CD_debias(cfg)
-
+```
